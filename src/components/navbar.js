@@ -40,11 +40,11 @@ class Navbar extends Component {
                 <header className="navbar App-header" id="nav-container">
 
                     <div className="col-4" >
-
                         {loggedIn ? (
                             <section className="navbar-section">
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
-                                <span className="text-secondary">logout</span></Link>
+                                    <span className="text-secondary">logout</span>
+                                </Link>
                             </section>
                         ) : (
                             <section className="navbar-section">
@@ -68,6 +68,7 @@ class Navbar extends Component {
                         <img src={logo} className="App-logo" alt="logo" />
                         <h1 className="App-title">MERN Passport</h1>
                     </div>
+
                 </header>
             </div>
         );

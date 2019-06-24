@@ -12,7 +12,7 @@ class Home extends Component {
         return (
             <div>
                 <p>Will Delete Home Page Later, logs users and passwords from database for now.</p>
-                <img style={imageStyle} alt="..." src="http://assets1.ignimgs.com/2018/02/21/fantasyboardgames-blogroll-1519230806845_1280w.jpg" />
+                <img style={imageStyle} alt="..." src="https://siteassets.pagecloud.com/marcsavard/images/2016-08-10-Gold-VIP-tickets-ID-ea28c78b-f9ab-4212-b41d-0c9b5c33098c.png" />
             </div>
         )
     }

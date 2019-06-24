@@ -34,7 +34,8 @@ class Signup extends Component {
 			console.log(response)
 			if (!response.data.errmsg) {
 				console.log('successful signup')
-				this.setState({ //redirect to login page
+				this.setState({
+					//redirect to login page
 					redirectTo: '/login'
 				})
 			} else {
@@ -90,11 +91,9 @@ class Signup extends Component {
 					<div className="form-group ">
 						<div className="col-7"></div>
 
-						<button
-							className="btn btn-primary col-1 col-mr-auto"
-							onClick={this.handleSubmit}
-							type="submit"
-						>Sign up</button>
+						<button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit} type="submit">
+							Sign up
+						</button>
 					</div>
 				</form>
 			</div>

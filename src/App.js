@@ -11,6 +11,7 @@ import Home from './components/home'
 class App extends Component {
   constructor() {
     super()
+
     this.state = {
       loggedIn: false,
       username: null
@@ -43,6 +44,7 @@ class App extends Component {
         })
       } else {
         console.log('Get user: no user');
+
         this.setState({
           loggedIn: false,
           username: null
@@ -64,22 +66,16 @@ class App extends Component {
         }
 
         {/* Routes to different components */}
-        <Route
-          exact path="/"
-          component={Home} />
+        <Route exact path="/" component={Home} />
           
         <Route
           path="/login"
-          render={() =>
-            <LoginForm
-              updateUser={this.updateUser}
-            />}
+          render={() => <LoginForm updateUser={this.updateUser} />}
         />
 
         <Route
           path="/signup"
-          render={() =>
-            <Signup/>}
+          render={() => <Signup />}
         />
 
       </div>
