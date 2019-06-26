@@ -4,12 +4,13 @@ import axios from 'axios'
 class Signup extends Component {
 	constructor() {
 		super()
+
 		this.state = {
 			username: '',
 			password: '',
 			confirmPassword: '',
-
 		}
+
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
@@ -32,6 +33,7 @@ class Signup extends Component {
 		})
 		.then(response => {
 			console.log(response)
+
 			if (!response.data.errmsg) {
 				console.log('successful signup')
 				this.setState({
@@ -46,7 +48,6 @@ class Signup extends Component {
 			console.log(error)
 		})
 	}
-
 
 	render() {
 		return (
