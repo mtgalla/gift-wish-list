@@ -5,11 +5,13 @@ import axios from 'axios'
 class LoginForm extends Component {
     constructor() {
         super()
+
         this.state = {
             username: '',
             password: '',
             redirectTo: null
         }
+
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
@@ -32,12 +34,14 @@ class LoginForm extends Component {
             .then(response => {
                 console.log('login response: ')
                 console.log(response)
+
                 if (response.status === 200) {
                     // update App.js state
                     this.props.updateUser({
                         loggedIn: true,
                         username: response.data.username
                     })
+                    
                     // update the state to redirect to home
                     this.setState({
                         redirectTo: '/'
@@ -45,8 +49,7 @@ class LoginForm extends Component {
                 }
             }).catch(error => {
                 console.log('login error: ')
-                console.log(error);
-                
+                console.log(error);       
             })
     }
 
@@ -96,11 +99,10 @@ class LoginForm extends Component {
 
                         <div className="form-group ">
                             <div className="col-7"></div>
-                            <button
-                                className="btn btn-primary col-1 col-mr-auto"
-                               
-                                onClick={this.handleSubmit}
-                                type="submit">Login</button>
+                            
+                            <button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit} type="submit">
+                                Login
+                            </button>
                         </div>
                     </form>
                 </div>

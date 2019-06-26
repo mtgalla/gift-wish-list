@@ -4,12 +4,13 @@ import axios from 'axios'
 class Signup extends Component {
 	constructor() {
 		super()
+
 		this.state = {
 			username: '',
 			password: '',
 			confirmPassword: '',
-
 		}
+
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	}
@@ -32,9 +33,11 @@ class Signup extends Component {
 		})
 		.then(response => {
 			console.log(response)
+
 			if (!response.data.errmsg) {
 				console.log('successful signup')
-				this.setState({ //redirect to login page
+				this.setState({
+					//redirect to login page
 					redirectTo: '/login'
 				})
 			} else {
@@ -45,7 +48,6 @@ class Signup extends Component {
 			console.log(error)
 		})
 	}
-
 
 	render() {
 		return (
@@ -90,11 +92,9 @@ class Signup extends Component {
 					<div className="form-group ">
 						<div className="col-7"></div>
 
-						<button
-							className="btn btn-primary col-1 col-mr-auto"
-							onClick={this.handleSubmit}
-							type="submit"
-						>Sign up</button>
+						<button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit} type="submit">
+							Sign up
+						</button>
 					</div>
 				</form>
 			</div>
