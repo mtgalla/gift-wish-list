@@ -21,21 +21,24 @@ const SearchResults = props => {
                         return (
                           <div>
                             <li className="list list-group-item">
-                                <Row className="SearchResult row" id={ticket.title + "Card"} key={ticket._id}>
+                                <Row className="SearchResult row" id={ticket.name + "Card"} key={ticket._id}>
                                     <Col size="12" className="ticketImage">
-                                        <img src={ticket.image} alt={ticket.title} />
+                                        <img src={ticket.image} alt={ticket.name} />
                                     </Col>
                                     <Col size="1" className="emptyCol"/>
                                     <Col size="9" className="ticketInfo">
-                                        <Row>
-                                            <h3 className="ticketTitle">{ticket.title}</h3>
-                                        </Row>
-                                        <Row>
-                                            <h4 className="ticketAuthor">{ticket.authors}</h4>
-                                        </Row>
-                                        <Row>
-                                            <p className="ticketDescription">{ticket.description}</p>
-                                        </Row>
+                                      <Row>
+                                          <h2 className="ticketDate">{ticket.date}</h2>
+                                      </Row>
+                                      <Row>
+                                          <h3 className="ticketName">{ticket.name}</h3>
+                                      </Row>
+                                      <Row>
+                                          <h4 className="ticketAttraction">{ticket.attraction}</h4>
+                                      </Row>
+                                      <Row>
+                                          <p className="ticketVenue">{ticket.venue}</p>
+                                      </Row>
                                     </Col>
                                 </Row>
                                 <br></br>

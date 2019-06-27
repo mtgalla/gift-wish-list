@@ -33,24 +33,26 @@ class Search extends Component {
     // console.log("tickets here:", tickets)
     .then(res => {
       console.log("response", res)
-      if (res.data.items === "error" || res.data.items === undefined) {
-        console.log(res.data.items);
-        throw new Error(res.data.items);
+      const events = res.data._embedded.events
+      if (events === "error" || events === undefined) {
+        console.log(events);
+        throw new Error(events);
       }
       else {
-        console.log(res.data.items);
-        let results = res.data.items;
+        console.log(events);
+        let results = events;
         results = results.map(result => {
           //map each ticket data into new object 
           //with ternary operators to handle missing results
           result = {
               key: result.id,
               id: result.id,
-              title: (result.volumeInfo.title===undefined) ? ("No title") : (result.volumeInfo.title),
-              authors: (result.volumeInfo.authors===undefined) ? ("No author") : (result.volumeInfo.authors),
-              description: (result.volumeInfo.description===undefined) ? ("No description") : (result.volumeInfo.description),
-              image: (result.volumeInfo.imageLinks===undefined) ? ("No image") : (result.volumeInfo.imageLinks.thumbnail),
-              link: (result.volumeInfo.infoLink===undefined) ? ("No link") : (result.volumeInfo.infoLink)
+              name: (result.name===undefined) ? ("No title") : (result.name),
+              attraction: (result._embedded.attractions===undefined) ? ("No info available") : (result._embedded.attractions[0].name),
+              venue: (result._embedded.venues[0].name===undefined) ? ("No venue info available") : (result._embedded.venues[0].name),
+              image: (result.images[0].url===undefined) ? ("No image") : (result.images[0].url),
+              link: (result.url===undefined) ? ("No link") : (result.url),
+              date: (result.dates.start.localDate===undefined) ? ("Date not available") : (result.dates.start.localDate)
           }
           // console.log(result);
           return result;
