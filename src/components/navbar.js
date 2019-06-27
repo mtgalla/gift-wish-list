@@ -49,7 +49,15 @@ class Navbar extends Component {
                         ) : (
                             <section className="navbar-section">
                                 <Link to="/" className="btn btn-link text-secondary">
+                                    <span className="text-secondary">Ticket App Name</span>
+                                </Link>
+
+                                <Link to="/" className="btn btn-link text-secondary">
                                     <span className="text-secondary">home</span>
+                                </Link>
+
+                                <Link to="/Saved" className="btn btn-link text-secondary">
+                                    <span className="text-secondary">Saved</span>
                                 </Link>
 
                                 <Link to="/login" className="btn btn-link text-secondary">

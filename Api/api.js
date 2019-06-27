@@ -1,7 +1,9 @@
 // api call for ticket master 
 
-var page = 0;
+let search = "zedd";
+let page = 0;
 
+// Get event json object from Ticket Master
 function getEvents(page) {
 
   $('#events-panel').show();
@@ -19,7 +21,7 @@ function getEvents(page) {
   
   $.ajax({
     type:"GET",
-    url:"https://app.ticketmaster.com/discovery/v2/events.json?apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=4&page="+page,
+    url:"https://app.ticketmaster.com/discovery/v2/events.json?keyword=" +search+ "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=4&page="+page,
     async:true,
     dataType: "json",
     success: function(json) {
@@ -96,3 +98,24 @@ function showAttraction(json) {
 }
 
 getEvents(page);
+
+// Get event for stubhub
+function getEvent(page) {
+  $.ajax({
+      type:"GET",
+      url:"https://api.stubhub.com/sellers/search/events/v3?q=" +search,
+      async:true,
+      dataType: "json",
+      headers: {
+        'Authorization': `Bearer ${"HXYFUF7ufrQ9EuxZ1lKZDnKehYpI"}`,
+      },
+      success: function(json) {
+          console.log(json);
+      },
+      error: function(err) {
+          console.log(err);
+      }
+  });
+}
+
+getEvent(page);
