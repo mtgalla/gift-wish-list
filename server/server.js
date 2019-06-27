@@ -5,10 +5,11 @@ const session = require('express-session')
 const dbConnection = require('./database') 
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
-const app = express()
-const PORT = 8080
+const app = express();
+const PORT = process.env.PORT || 8080;
 
 // Route requires
+const routes = require("./routes");
 const user = require('./routes/user')
 
 // MIDDLEWARE
@@ -35,6 +36,7 @@ app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser
 
 // Routes
+app.use(routes);
 app.use('/user', user)
 
 // Starting Server 
