@@ -5,20 +5,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // components
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
-// import Navbar from './components/navbar'
+import Navbar from './components/navbar'
 import Home from './components/home'
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 // import Login from "./pages/Login";
 // import Nav from "./components/Nav";
-import NavTemplate from "./components/NavTemplate";
+// import NavTemplate from "./components/NavTemplate";
 
 function App() {
   return (
     <Router>
       <div>
-        <NavTemplate />
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/tickets" component={Search} />
