@@ -76,11 +76,11 @@ class Login extends Component {
             />}
         /> */}
 
-        <Route
+        {/* <Route
           path="/signup"
           render={() =>
             <Signup/>}
-        />
+        /> */}
 
       </div>
     );

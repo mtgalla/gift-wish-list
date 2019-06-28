@@ -4,8 +4,8 @@ import axios from "axios";
 
 export default {
   // Search books
-  searchTickets: function(title) {
-    return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + title + "&fields=items(id,volumeInfo(title,authors,description,imageLinks/thumbnail,infoLink))")
+  searchTickets: function(search) {
+    return axios.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=" +search+ "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=4&page="+5)
     //+ "&fields=items(volumeInfo)"
   },
   // Gets all books
