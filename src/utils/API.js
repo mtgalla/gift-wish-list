@@ -20,8 +20,11 @@ export default {
   deleteTicket: function(id) {
     return axios.delete("/api/tickets/" + id);
   },
-  // Saves a book to the database
+  // Saves a ticket to the database
   saveTicket: function(savedTickets) {
     return axios.post("/api/tickets", savedTickets);
+  },
+  saveUserTicket: function(userTicket){
+    return axios.post("/api/tickets", userTicket)
   }
 };

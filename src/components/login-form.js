@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+// import Login from "./pages/Login"
 
 class LoginForm extends Component {
     constructor() {

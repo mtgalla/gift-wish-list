@@ -74,9 +74,9 @@ class Login extends Component {
             <LoginForm
               updateUser={this.updateUser}
             />}
-        /> */}
+        />
 
-        {/* <Route
+        <Route
           path="/signup"
           render={() =>
             <Signup/>}
