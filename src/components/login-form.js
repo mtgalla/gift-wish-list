@@ -25,7 +25,6 @@ class LoginForm extends Component {
 
     handleSubmit(event) {
         event.preventDefault()
-        console.log('handleSubmit')
 
         axios.post('/user/login', {
             username: this.state.username,
@@ -49,7 +48,8 @@ class LoginForm extends Component {
             }
         }).catch(error => {
             console.log('login error: ')
-            console.log(error);       
+            console.log(error); 
+            alert("Incorrect Email or Password")      
         })
     }
 
@@ -111,4 +111,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm
+export default connect(updateUser) (LoginForm)
