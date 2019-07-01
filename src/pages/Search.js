@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 // import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
+// import router from "../../server/routes/api/user"
+// import userController from "../../controllers/userController";
 import Jumbotron from "../components/Jumbotron";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
@@ -8,7 +10,7 @@ import { Col, Row, Container } from "../components/Grid";
 import SearchResults from "../components/SearchResults";
 import SearchForm from "../components/SearchForm";
 // import { Input, TextArea, FormBtn } from "../components/Form";
-
+// const db = require("../../server/database/models");
 class Search extends Component {
   state = {
     tickets: [],
@@ -77,6 +79,9 @@ class Search extends Component {
           this.setState({ message: alert("Your ticket is saved") })
           )
         .catch(err => console.log(err))
+    // return db.User.findOneAndUpdate({},{$push: {ticket:savedTickets._id}},{new:true});
+
+    
 }
 
   render() {

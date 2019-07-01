@@ -22,19 +22,22 @@ const SavedTickets = props => {
                             <li className="list list-group-item">
                                 <Row className="SearchResult row" id={saveTicket.title + "Card"} key={saveTicket._id}>
                                     <Col size="12" className="ticketImage">
-                                        <img src={saveTicket.image} alt={saveTicket.title} />
+                                        <img src={saveTicket.image} alt={saveTicket.name} />
                                     </Col>
                                     <Col size="1" className="emptyCol"/>
                                     <Col size="9" className="ticketInfo">
-                                        <Row>
-                                            <h3 className="ticketTitle">{saveTicket.title}</h3>
-                                        </Row>
-                                        <Row>
-                                            <h4 className="ticketAuthor">{saveTicket.authors}</h4>
-                                        </Row>
-                                        <Row>
-                                            <p className="ticketDescription">{saveTicket.description}</p>
-                                        </Row>
+                                      <Row>
+                                          <h3 className="ticketDate">{saveTicket.date}</h3>
+                                      </Row>
+                                      <Row>
+                                          <h3 className="ticketName">{saveTicket.name}</h3>
+                                      </Row>
+                                      <Row>
+                                          <h4 className="ticketAttraction">{saveTicket.attraction}</h4>
+                                      </Row>
+                                      <Row>
+                                          <p className="ticketVenue">{saveTicket.venue}</p>
+                                      </Row>
                                     </Col>
                                 </Row>
                                 <br></br>
