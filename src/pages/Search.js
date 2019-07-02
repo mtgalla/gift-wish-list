@@ -1,23 +1,25 @@
 import React, { Component } from "react";
 // import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
-// import router from "../../server/routes/api/user"
-// import userController from "../../controllers/userController";
+// import router from "../../server/routes/"
+// import findOneAndUpdate from "../../controllers/userController";
 import Jumbotron from "../components/Jumbotron";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import SearchResults from "../components/SearchResults";
+import savedTickets from "../components/SavedTickets";
 import SearchForm from "../components/SearchForm";
 // import { Input, TextArea, FormBtn } from "../components/Form";
-// const db = require("../../server/database/models");
+
 class Search extends Component {
   state = {
     tickets: [],
     search: "",
     error: "",
     savedTickets: [],
-    message:""
+    message:"",
+    userTickets: [],
   };
 
   handleInputChange = event => {
@@ -72,17 +74,53 @@ class Search extends Component {
     event.preventDefault();
     let savedTickets = this.state.tickets.filter(ticket => ticket.id === event.target.id)
     savedTickets = savedTickets[0];
+    //userId = cookies.get.userID
     console.log(savedTickets);
-    API.saveTicket(savedTickets)
+    API.saveTicket(savedTickets) //userID
         .then(
           this.setState({savedTickets: savedTickets}),
           this.setState({ message: alert("Your ticket is saved") })
+          // console.log(savedTickets.id),
+          // console.log(this.state.tickets),
+          // API.getTicket(savedTickets.id)
+          // ).then(res => {
+          //   console.log(savedTickets.id)
+          // API.saveUserTicket({ userTickets: savedTickets.id},{new:true})
+          //   // API.saveUserTicket(res.data[0]._id)
+          //   // .then({$push:{userTickets:res.data[0]._id}},{new:true})
+          //   console.log(res.data[0]._id)
+          // })
           )
         .catch(err => console.log(err))
-    // return db.User.findOneAndUpdate({},{$push: {ticket:savedTickets._id}},{new:true});
-
-    
+        // return this.ticketSave();
+            // return router.put(findOneAndUpdate({},{$push: {ticket:savedTickets._id}},{new:true}));
 }
+
+  //save ticket
+  // ticketSave = event => {
+  //   let savedTickets = this.state.tickets.filter(ticket => ticket.id === event.target.id)
+  //   console.log("Save ticket here: ", savedTickets);
+  //   const _id = event.target.id;
+  //   API.saveUserTicket(_id)
+  //     .then(x => {
+  //       console.log("looking for ticket id to save here: ", this.state.savedTickets[0]._id);
+  //       console.log(_id);
+  //       const newSavedTickets = this.state.savedTickets.filter(item => item._id !== _id);
+  //       this.setState({ userTickets: newSavedTickets});
+  //     })
+  //     .catch(err => console.log(err));
+  // };
+
+
+loadTickets = () => {
+    API.getTickets()
+      .then(res => {
+        this.setState({ savedTickets: res.data});
+        console.log(res.data[0]._id)
+        // console.log("looking for savedTickets here: ", this.state.savedTickets)
+      })
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (

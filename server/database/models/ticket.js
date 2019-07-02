@@ -7,7 +7,8 @@ const ticketSchema = new Schema({
   venue: {type: String, trim: true},
   link: {type: String, trim: true },
   image: {type: String, trim: true},
-  date: {type: String}
+  date: {type: String},
+  key: {type: String, unique: true}
 });
 
 const Ticket = mongoose.model("Ticket", ticketSchema);

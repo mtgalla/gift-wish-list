@@ -71,4 +71,6 @@ router.post('/logout', (req, res) => {
     }
 })
 
+// router.put(findOneAndUpdate({},{$push: {ticket:savedTickets._id}},{new:true}));
+
 module.exports = router

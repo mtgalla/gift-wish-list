@@ -7,7 +7,8 @@ import { Container } from "../components/Grid";
 //Save class with saved Tickets state
 class Save extends Component {
   state = {
-    savedTickets: []
+    savedTickets: [],
+    userTickets:[]
 
   };
 
@@ -21,10 +22,26 @@ class Save extends Component {
     API.getTickets()
       .then(res => {
         this.setState({ savedTickets: res.data});
+        console.log(res.data[0]._id)
+        // const newTicket = {$push: {userTickets: res.data[0]._id}}
+        // API.saveUserTicket(res.data[0]._id)
+        //   .then(
+        //    this.setState({userTickets : newTicket})
+        //     )
+            // API.saveUserTicket(res.data[0]._id)
+            // .then({$push:{userTickets:res.data[0]._id}},{new:true})
+            // console.log(res.data[0]._id)
+          })
         // console.log("looking for savedTickets here: ", this.state.savedTickets)
-      })
       .catch(err => console.log(err));
   };
+
+  // saveTicket = () => {
+  //   API.saveUserTicket()
+  //   .then(res => {
+  //     console.log(res.data[0]._id);
+  //   })
+  // };
 
   //delete ticket
   deleteTicket = event => {

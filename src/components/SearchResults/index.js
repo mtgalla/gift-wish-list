@@ -20,8 +20,8 @@ const SearchResults = props => {
                     {props.tickets.map(ticket => {
                         return (
                           <div>
-                            <li className="list list-group-item">
-                                <Row className="SearchResult row" id={ticket.name + "Card"} key={ticket._id}>
+                            <li className="list list-group-item" id={ticket.id}>
+                                <Row className="SearchResult row" id={ticket.name + "Card"} key={ticket.id}>
                                     <Col size="12" className="ticketImage">
                                         <img src={ticket.image} alt={ticket.name} />
                                     </Col>
@@ -43,7 +43,7 @@ const SearchResults = props => {
                                 </Row>
                                 <br></br>
                                 <Row className="buttonDiv ">
-                                    <button className="savedTickets btn btn-primary" id={ticket.id} onClick={(event) => props.savedTickets(event)}>
+                                    <button className="savedTickets btn btn-primary" id={ticket.id} key={ticket._id} onClick={(event) => props.savedTickets(event)}>
                                         Save ticket
                                     </button>
                                     <a href={ticket.link} target="_blank" rel="noopener noreferrer">

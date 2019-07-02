@@ -1,22 +1,23 @@
 import axios from "axios";
 
-
-
 export default {
-  // Search books
+  // Search ticket
   searchTickets: function(search) {
-    return axios.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=" +search+ "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=4&page="+5)
-    //+ "&fields=items(volumeInfo)"
+    // return axios.get("https://app.ticketmaster.com/discovery/v2/events.city.json?keyword=" +search+ "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=4&page="+5)
+    return axios.get( "https://api.stubhub.com/sellers/search/events/v3",
+      {params: {q:search},
+    headers: { 'Authorization':'Bearer HXYFUF7ufrQ9EuxZ1lKZDnKehYpI' }
+  })
   },
-  // Gets all books
+  // Gets all tickets
   getTickets: function() {
     return axios.get("/api/tickets/");
   },
-  // Gets the book with the given id
+  // Gets the ticket with the given id
   getTicket: function(id) {
     return axios.get("/api/tickets/" + id);
   },
-  // Deletes the book with the given id
+  // Deletes the ticket with the given id
   deleteTicket: function(id) {
     return axios.delete("/api/tickets/" + id);
   },
@@ -24,7 +25,7 @@ export default {
   saveTicket: function(savedTickets) {
     return axios.post("/api/tickets", savedTickets);
   },
-  saveUserTicket: function(userTicket){
-    return axios.post("/api/tickets", userTicket)
+  saveUserTicket: function(id, ticketId){
+    return axios.put("/api/user/" + id, {ticket: ticketId})
   }
 };
