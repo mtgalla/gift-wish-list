@@ -66,7 +66,7 @@ class App extends Component {
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         
         {this.state.loggedIn &&
-          <p>Your Email, {this.state.username}, has been registered!</p>
+          <p>Signed in as: {this.state.username}</p>
         }
 
         <Switch>
