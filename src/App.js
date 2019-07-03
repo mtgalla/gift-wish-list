@@ -62,27 +62,35 @@ class App extends Component {
   return (
     <Router>
       <div>
-        <Navbar />
+
+        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+        
+        {this.state.loggedIn &&
+          <p>Your Email, {this.state.username}, has been registered!</p>
+        }
+
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/tickets" component={Search} />
           <Route exact path="/saved" component={Saved} />
           <Route exact path="/saved/:id" component={Saved} />
           <Route exact path="/home" component={Home} />
-          <Route path="/login" component={LoginForm} />
-          <Route path="/signup" component={Signup} />
-          {/* <Route path="/login" render={() =>
+
+          <Route path="/login" render={() =>
             <LoginForm
               updateUser={this.updateUser}
             />}
-        />
-          <Route path="/signup"
-          render={() =>
+          />
+        
+          <Route path="/signup" render={() =>
             <Signup/>}
-        />*/}
+          />
+          
           <Route component={NoMatch} /> 
         </Switch>
+
       </div>
+
     </Router>
   );
 }
