@@ -23,7 +23,7 @@ const SearchResults = props => {
                                     </Col>
                                     </Row>
                                       <Row >
-                                          <h2 className="ticketDate">{ticket.date}</h2>
+                                          <h2 className="ticketDate"><Moment format ="MMM DD">{ticket.date}</Moment></h2>
                                       </Row>
                                       <Row >
                                           <h3 className="ticketName">{ticket.name}</h3>

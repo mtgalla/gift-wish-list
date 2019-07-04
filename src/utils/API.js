@@ -11,11 +11,7 @@ export default {
 
   // Search ticketmaster
   searchTickets: function(search) {
-<<<<<<< Updated upstream
     return axios.get(tUrl + search + tApiKey + resultSize + location + category)
-=======
-    return axios.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=" +search+ "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=12")
->>>>>>> Stashed changes
   },
   //search StubHub
   searchStubhub: function(search) {
