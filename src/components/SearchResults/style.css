@@ -1,7 +1,12 @@
-.card .list {
-  border-radius: 10px;
-}
+
 
 .list {
-background-color: lightgray;
+background-color: black;
 }
+
+#ticketImage {
+  min-width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
