@@ -1,6 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Col, Row, } from "../Grid";
+import Moment from "react-moment";
 
 const SearchResults = props => {
   console.log(props.tickets.length);
@@ -28,7 +29,7 @@ const SearchResults = props => {
                                     <Col size="1" className="emptyCol"/>
                                     <Col size="9" className="ticketInfo">
                                       <Row>
-                                          <h2 className="ticketDate">{ticket.date}</h2>
+                                          <h2 className="ticketDate"><Moment format ="MMM DD">{ticket.date}</Moment></h2>
                                       </Row>
                                       <Row>
                                           <h3 className="ticketName">{ticket.name}</h3>

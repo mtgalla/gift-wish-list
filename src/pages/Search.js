@@ -48,6 +48,10 @@ class Search extends Component {
 // )
 // };
 
+// test = () => {
+//   app.get()
+// }
+
 searchStub = () => {
   API.searchStubhub(this.state.search)
   .then(res => {
