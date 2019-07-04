@@ -10,7 +10,7 @@ import { Col, Row, Container } from "../components/Grid";
 import SearchResults from "../components/SearchResults";
 // import savedTickets from "../components/SavedTickets";
 import SearchForm from "../components/SearchForm";
-// import axios from "axios";
+import axios from "axios";
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Search extends Component {
@@ -48,8 +48,9 @@ class Search extends Component {
 // )
 // };
 
-// test = () => {
-//   app.get()
+// test = (res) => {
+//   app.get("/sports")
+//   console.log(res)
 // }
 
 searchStub = () => {

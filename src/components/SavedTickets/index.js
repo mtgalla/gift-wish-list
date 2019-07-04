@@ -1,6 +1,7 @@
 import React from "react";
 // import "./style.css";
 import { Col, Row, } from "../Grid";
+import Moment from "react-moment";
 
 const SavedTickets = props => {
   return (props.savedTickets.length === 0) ? (
@@ -27,7 +28,7 @@ const SavedTickets = props => {
                                     <Col size="1" className="emptyCol"/>
                                     <Col size="9" className="ticketInfo">
                                       <Row>
-                                          <h3 className="ticketDate">{saveTicket.date}</h3>
+                                          <h3 className="ticketDate"><Moment format ="MMM DD">{saveTicket.date}</Moment></h3>
                                       </Row>
                                       <Row>
                                           <h3 className="ticketName">{saveTicket.name}</h3>
