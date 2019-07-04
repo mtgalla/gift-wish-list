@@ -42,8 +42,6 @@ class Signup extends Component {
 				password: this.state.password
 			})
 			.then(response => {
-				console.log(response)
-
 				if (!response.data.error) {
 					alert('Successful Signup!')
 				
@@ -55,7 +53,6 @@ class Signup extends Component {
 					alert('Email Already Taken')
 				}
 			}).catch(error => {
-				console.log('signup error: ')
 				console.log(error)
 			})
 

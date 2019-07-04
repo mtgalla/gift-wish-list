@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-// import Login from "./pages/Login"
 
 class LoginForm extends Component {
     constructor() {
@@ -31,10 +30,8 @@ class LoginForm extends Component {
             password: this.state.password
         })
         .then(response => {
-            console.log('login response: ')
-            console.log(response)
+            if (response.status === 200) {
 
-            if (response.statusText  === "ok") {
                 // update App.js state
                 this.props.updateUser({
                     loggedIn: true,
@@ -47,7 +44,6 @@ class LoginForm extends Component {
                 })
             }
         }).catch(error => {
-            console.log('login error: ')
             console.log(error); 
             alert("Incorrect Email or Password")      
         })
