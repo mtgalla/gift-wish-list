@@ -34,7 +34,7 @@ class LoginForm extends Component {
             console.log('login response: ')
             console.log(response)
 
-            if (response.status === 200) {
+            if (response.statusText  === "ok") {
                 // update App.js state
                 this.props.updateUser({
                     loggedIn: true,

@@ -8,8 +8,9 @@ import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 // import { List, ListItem } from "../components/List";
 import SearchResults from "../components/SearchResults";
-import savedTickets from "../components/SavedTickets";
+// import savedTickets from "../components/SavedTickets";
 import SearchForm from "../components/SearchForm";
+// import axios from "axios";
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Search extends Component {
@@ -32,8 +33,62 @@ class Search extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("this is search on line 48 " + this.state.search);
+    console.log("this is search on line 35 " + this.state.search);
+    this.searchTM(event)
+    // this.searchSports()
+    // this.searchStub(event)
+  };
+
+// searchSports = () => {
+//   axios.get("/sports")
+// .then(res => {
+// console.log("sport response",res);
+// }
+
+// )
+// };
+
+searchStub = () => {
+  API.searchStubhub(this.state.search)
+  .then(res => {
+    console.log("response", res)
+    const events = res.data.events
+    if (events === "error" || events === undefined) {
+      console.log(events);
+      throw new Error(events);
+    }
+    else {
+      console.log(events);
+      let results = events;
+      results = results.map(result => {
+        //map each ticket data into new object 
+        //with ternary operators to handle missing results
+        const prefixUri = "https://www.stubhub.com/"
+        const img = "https://marketingland.com/wp-content/ml-loads/2016/08/Stubhub-White-Logo-On-Blue-Background-1.png"
+        result = {
+            key: result.id,
+            id: result.id,
+            name: (result.name===undefined) ? ("No title") : (result.name),
+            attraction: (result.performers.name===undefined) ? ("No info available") : (result.performers.name),
+            venue: (result.venue.name===undefined) ? ("No venue info available") : (result.venue.name),
+            image: (img) ? ("No image") : (img),
+            link: (result.webURI===undefined) ? ("No link") : (prefixUri+result.webURI),
+            date: (result.eventDateLocal===undefined) ? ("Date not available") : (result.eventDateLocal)
+        }
+        // console.log(result);
+        return result;
+    })
+    this.setState({ tickets: results, error: "" });
+    console.log(this.state);
+    console.log(results)
+  }
+})
+  .catch(err => this.setState({ error: err.items, tickets:"" }), console.log("this is an error"));
+};
+
+  searchTM = () => {
     API.searchTickets(this.state.search)
+    // API.searchTickets("","sports")
     // console.log("tickets here:", tickets)
     .then(res => {
       console.log("response", res)
@@ -84,12 +139,12 @@ class Search extends Component {
           // console.log(this.state.tickets),
           // API.getTicket(savedTickets.id)
           // ).then(res => {
-          //   console.log(savedTickets.id)
-          // API.saveUserTicket({ userTickets: savedTickets.id},{new:true})
+          // API.saveUserTicket({userId: userId},{ userTickets: savedTickets.id},{new:true})
           //   // API.saveUserTicket(res.data[0]._id)
           //   // .then({$push:{userTickets:res.data[0]._id}},{new:true})
           //   console.log(res.data[0]._id)
           // })
+          // }
           )
         .catch(err => console.log(err))
         // return this.ticketSave();

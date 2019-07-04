@@ -3,11 +3,18 @@ import axios from "axios";
 export default {
   // Search ticket
   searchTickets: function(search) {
-    // return axios.get("https://app.ticketmaster.com/discovery/v2/events.city.json?keyword=" +search+ "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=4&page="+5)
+    return axios.get("https://app.ticketmaster.com/discovery/v2/events.json?keyword=" +search+ "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1&size=10&radius=25&unit=miles&city=boston&classificationName=[art]")
+  },
+  //search StubHub
+  searchStubhub: function(search) {
     return axios.get( "https://api.stubhub.com/sellers/search/events/v3",
-      {params: {q:search},
-    headers: { 'Authorization':'Bearer HXYFUF7ufrQ9EuxZ1lKZDnKehYpI' }
-  })
+    {params: {q:search},
+  headers: { 'Authorization':'Bearer HXYFUF7ufrQ9EuxZ1lKZDnKehYpI' }
+})
+  },
+// Search category
+  searchCategory: function(category) {
+    return axios.get("/sports" + category)
   },
   // Gets all tickets
   getTickets: function() {
