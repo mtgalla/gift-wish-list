@@ -15,8 +15,14 @@ class Save extends Component {
   
   componentDidMount() {
     this.loadTickets();
+    this.test();
   }
 
+//replace(/\/r/g, '/')
+  test = () => {
+  console.log(this.props.match.path.replace(/\//g, ''))
+      }
+  
   //get Tickets and set saved ticket state 
   loadTickets = () => {
     API.getTickets()
