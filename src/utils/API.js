@@ -2,16 +2,17 @@ import axios from "axios";
 
   //ticketmaster search variables
    const tUrl = "https://app.ticketmaster.com/discovery/v2/events.json?";
-   const tApiKey = "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1"
-   const location = "&radius=25&unit=miles&city=boston"
-   const category = "&classificationName="
-   const resultSize = "&size=10"
+   const keyword = "&keyword="
+   const tApiKey = "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1";
+   const location = "&radius=25&unit=miles&city=boston";
+   const classification = "&classificationName=";
+   const resultSize = "&size=20";
 
 export default {
 
   // Search ticketmaster
   searchTickets: function(search) {
-    return axios.get(tUrl + search + tApiKey + resultSize + location + category)
+    return axios.get(tUrl + keyword + search + tApiKey + resultSize)
   },
   //search StubHub
   searchStubhub: function(search) {
@@ -22,7 +23,7 @@ export default {
   },
 // Search category
   searchCategory: function(category) {
-    return axios.get(tUrl + tApiKey + resultSize + category)
+    return axios.get(tUrl + tApiKey + classification + category)
   },
   // Gets all tickets
   getTickets: function() {

@@ -9,6 +9,7 @@ import Navbar from './components/navbar'
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
+import Category from "./pages/Category"
 
 class App extends Component {
   constructor() {
@@ -63,6 +64,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/tickets" component={Search} />
+          <Route exact path="/sports" component={Category} />
+          <Route exact path="/concert" component={Category} />
+          <Route exact path="/theatre" component={Category} />
           <Route exact path="/saved" component={Saved} />
           <Route exact path="/saved/:id" component={Saved} />
 
