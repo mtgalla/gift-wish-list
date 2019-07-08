@@ -7,9 +7,11 @@ import axios from "axios";
    const location = "&radius=25&unit=miles&city=boston";
    const classification = "&classificationName=";
    const resultSize = "&size=20";
+   const page = "&page=";
+  const randomPage = page + (Math.floor(Math.random() * 20)).toString();
+  console.log(randomPage);
 
 export default {
-
   // Search ticketmaster
   searchTickets: function(search) {
     return axios.get(tUrl + keyword + search + tApiKey + resultSize)
@@ -23,7 +25,7 @@ export default {
   },
 // Search category
   searchCategory: function(category) {
-    return axios.get(tUrl + tApiKey + classification + category)
+    return axios.get(tUrl + tApiKey + classification + category + randomPage)
   },
   // Gets all tickets
   getTickets: function() {
@@ -41,7 +43,10 @@ export default {
   saveTicket: function(savedTickets) {
     return axios.post("/api/tickets", savedTickets);
   },
-  saveUserTicket: function(id, ticketId){
-    return axios.put("/api/user/" + id, {ticket: ticketId})
+  getUser: function() {
+    return axios.get("/user/");
+  },
+  saveUserTicket: function (userId, {users: userTickets}) {
+    return axios.put("/api/user/"+ userId, {users :userTickets})
   }
 };

@@ -5,7 +5,7 @@ import Moment from "react-moment";
 
 const SavedTickets = props => {
   return (props.savedTickets.length === 0) ? (
-    <div className="card">
+    <div className="card1">
         <div className="card-body player">
             <div className="article">
                 <h3>No Saved Tickets</h3>
@@ -13,7 +13,7 @@ const SavedTickets = props => {
         </div>
     </div>
 ) : (
-        <div className="card">
+        <div className="card1">
             <div className="card-body">
                 <div className="article">
                     <h3>Saved Tickets</h3>

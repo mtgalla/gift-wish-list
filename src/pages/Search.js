@@ -1,17 +1,12 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
+import "./style.css";
 import API from "../utils/API";
-// import router from "../../server/routes/"
-// import findOneAndUpdate from "../../controllers/userController";
 import Jumbotron from "../components/Jumbotron";
-// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-// import { List, ListItem } from "../components/List";
 import SearchResults from "../components/SearchResults";
-// import savedTickets from "../components/SavedTickets";
 import SearchForm from "../components/SearchForm";
+import axios from "axios";
 
-// import { Input, TextArea, FormBtn } from "../components/Form";
 
 class Search extends Component {
   state = {
@@ -20,7 +15,47 @@ class Search extends Component {
     error: "",
     savedTickets: [],
     message:"",
-    userTickets: [],
+    userTickets: "",
+    userId: "",
+    ticketId: null
+  };
+
+  componentDidMount() {
+    API.searchCategory(this.props.match.path.replace(/\//g, ''))
+    .then(
+      res => {
+      console.log("response", res)
+      const events = res.data._embedded.events
+      if (events === "error" || events === undefined) {
+        console.log(events);
+        throw new Error(events);
+      }
+      else {
+        console.log(events);
+        let results = events;
+        results = results.map(result => {
+          //map each ticket data into new object 
+          //with ternary operators to handle missing results
+          result = {
+              key: result.id,
+              id: result.id,
+              name: (result.name===undefined) ? ("No title") : (result.name),
+              attraction: (result._embedded.attractions===undefined) ? ("No info available") : (result._embedded.attractions[0].name),
+              venue: (result._embedded.venues[0].name===undefined) ? ("No venue info available") : (result._embedded.venues[0].name),
+              image: (result.images[0].url===undefined) ? ("No image") : (result.images[0].url),
+              link: (result.url===undefined) ? ("No link") : (result.url),
+              date: (result.dates.start.localDate===undefined) ? ("Date not available") : (result.dates.start.localDate)
+          }
+          // console.log(result);
+          return result;
+      })
+      this.setState({ tickets: results, error: "" });
+      console.log(this.state);
+      console.log(results)
+    }
+  }
+  )
+    .catch(err => this.setState({ error: err.items, tickets:"" }), console.log("this is an error"));
   };
 
   handleInputChange = event => {
@@ -84,6 +119,7 @@ searchCategoryTM = () => {
 }
 
   searchTM = () => {
+    this.getUserId();
     API.searchTickets(this.state.search)
     .then(
       res => {
@@ -111,57 +147,64 @@ searchCategoryTM = () => {
           }
           // console.log(result);
           return result;
+          
       })
+  
       this.setState({ tickets: results, error: "" });
       console.log(this.state);
       console.log(results)
     }
   }
   )
-    .catch(err => this.setState({ error: err.items, tickets:"" }), console.log("this is an error"));
-};
+   .catch(err => this.setState({ error: err.items, tickets:"" }), console.log("this is an error"));
+   };
 
 //save tickets
  savedTickets = event => {
     event.preventDefault();
     let savedTickets = this.state.tickets.filter(ticket => ticket.id === event.target.id)
     savedTickets = savedTickets[0];
-    //userId = cookies.get.userID
     console.log(savedTickets);
-    API.saveTicket(savedTickets) //userID
+    API.saveTicket(savedTickets)
         .then(
           this.setState({savedTickets: savedTickets}),
           this.setState({ message: alert("Your ticket is saved") })
-          // console.log(savedTickets.id),
-          // console.log(this.state.tickets),
-          // API.getTicket(savedTickets.id)
-          // ).then(res => {
-          // API.saveUserTicket({userId: userId},{ userTickets: savedTickets.id},{new:true})
-          //   // API.saveUserTicket(res.data[0]._id)
-          //   // .then({$push:{userTickets:res.data[0]._id}},{new:true})
-          //   console.log(res.data[0]._id)
-          // })
-          // }
-          )
+  )
+  //get ticket id from newly saved ticket
+  .then (res =>
+    this.userTickets = res.data._id,
+    this.setState({
+      userTickets : this.userTickets
+    })
+    )
+//get current user id from db and then push saved ticket id to user db
+  .then( res =>
+    console.log("from line 210 ", this.userTickets),
+    this.getUserId(),
+    this.userId = this.state.userId,
+    axios.put('/api/user/' + this.userId, {$push : {
+      userTickets: this.userTickets }}, {new:true}
+    )
+  .then(response => {
+          // update the userTicket state 
+          this.setState({userTickets: this.userTickets})
+          console.log(response)
+          })
+        )
         .catch(err => console.log(err))
-        // return this.ticketSave();
-            // return router.put(findOneAndUpdate({},{$push: {ticket:savedTickets._id}},{new:true}));
 }
-
-  //save ticket
-  // ticketSave = event => {
-  //   let savedTickets = this.state.tickets.filter(ticket => ticket.id === event.target.id)
-  //   console.log("Save ticket here: ", savedTickets);
-  //   const _id = event.target.id;
-  //   API.saveUserTicket(_id)
-  //     .then(x => {
-  //       console.log("looking for ticket id to save here: ", this.state.savedTickets[0]._id);
-  //       console.log(_id);
-  //       const newSavedTickets = this.state.savedTickets.filter(item => item._id !== _id);
-  //       this.setState({ userTickets: newSavedTickets});
-  //     })
-  //     .catch(err => console.log(err));
-  // };
+//method to get user id  
+getUserId = () => {
+  API.getUser(this.userId)
+  .then( response => {
+    this.setState({
+      userId: response.data.user._id
+    })
+    let userId = response.data.user._id
+    console.log("getUserId: ", userId)
+    console.log("getthis.state.userId", this.state.userId)
+  })
+};
 
 
 loadTickets = () => {

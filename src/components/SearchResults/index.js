@@ -6,33 +6,38 @@ import Moment from "react-moment";
 const SearchResults = props => {
   console.log(props.tickets.length);
   return (props.tickets.length === 0) ? (
-    <div className="card">
+    <div className="card1">
                 <h3>No Results to Display</h3>
             </div>
 ) : (
         <div className="card-group">
                     {props.tickets.map(ticket => {
                         return (
-                            <Col size="3">
-                          <div className="card">
+                            <Col size="sm-12 md-5 lg-4">
+                          <div className="card1">
                             <li className="list list-group-item" id={ticket.id}>
                             
-                                    <Row size="12">
-                                    <Col size="12" className="ticketImage">
+                                   
+                                    <Row>
+                                      <Col size="6">
+                                      <h3 className="ticketDate"><Moment format ="MMM DD">{ticket.date}</Moment></h3>
+                                     
+                                    {/* <Col size="" className="ticketImage"> */}
                                         <img id="ticketImage" src={ticket.image} alt={ticket.name} />
                                     </Col>
-                                    </Row>
-                                      <Row >
-                                          <h2 className="ticketDate"><Moment format ="MMM DD">{ticket.date}</Moment></h2>
-                                      </Row>
-                                      <Row >
-                                          <h3 className="ticketName">{ticket.name}</h3>
-                                      </Row>
-                                      <Row >
+                                    
+                                     
+                                      
+                                        <Col size="6">
+                                          <h4 className="ticketName">{ticket.name}</h4>
+                                         
+                                      
+                                      {/* <Row >
                                           <h4 className="ticketAttraction">{ticket.attraction}</h4>
-                                      </Row>
-                                      <Row >
+                                      </Row> */}
+                                   
                                           <p className="ticketVenue">{ticket.venue}</p>
+                                          </Col>
                                       </Row>
                                     {/* </Col> */}
                                 
