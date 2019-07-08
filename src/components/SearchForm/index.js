@@ -5,21 +5,21 @@ import "./style.css";
 function SearchForm(props) {
   return (
     <form className="search">
-      <div className="form-group">
+      <div className="form-group-inline col-12">
         <label htmlFor="search"></label>
         <input
           value={props.search}
           onChange={props.handleInputChange}
           name="search"
           type="text"
-          className="form-control"
+          className="form-control-inline col-9"
           placeholder="Enter Event"
           id="book"
         />
-        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success" style={{color:"blue"}}>
+        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success col-2 button-inline" style={{color:"blue"}}>
           Submit
         </button>
-      </div>
+        </div>
     </form>
   );
 }

@@ -3,6 +3,10 @@ import { Route, Link } from 'react-router-dom'
 import logo from '../logo.svg';
 import '../App.css';
 import axios from 'axios'
+import SearchForm from '../components/SearchForm';
+import SignInBtn from '../components/SignInBtn';
+import Menu from '../components/Menu';
+
 
 class Navbar extends Component {
     constructor() {
@@ -33,36 +37,54 @@ class Navbar extends Component {
             <div>
                 <header className="navbar App-header" id="nav-container">
 
-                    <div className="col-4" >
-                        {loggedIn ? (
-                            <section className="navbar-section">
+
+
+                <form class="col-10"><SearchForm></SearchForm></form>
+
+                <div>
+                        {loggedIn ? ( 
+                            <section className="navbar-section" >
 
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">Logout</span>
                                 </Link>
 
                             </section>
-                        ) : (
-                            <section className="navbar-section">
 
-                                <Link to="/login" className="btn btn-link text-secondary">
-                                    <span className="text-secondary">Login</span>
-				                </Link>
+                        ) : ( <SignInBtn></SignInBtn> 
+                            // <section className="navbar-section signbtn">
+
+                            //     <Link to="/login" className="btn btn-link text-secondary signbtn">
+                            //         <span className="text-secondary">Login</span>
+				            //     </Link>
                                 
-                                <Link to="/signup" className="btn btn-link">
-                                    <span className="text-secondary">Sign Up</span>
-				                </Link>
+                            //     <Link to="/signup" className="btn btn-link signbtn">
+                            //         <span className="text-secondary">Sign Up</span>
+				            //     </Link>
 
-                            </section>
+                            // </section>
                         )}
                     </div>
 
-                    <div className="col-4 col-mr-auto">
-                        <div id="top-filler"></div>
-                        <img src={logo} className="App-logo" alt="logo" />
-                        <h1 className="App-title">Ticket-Tracker</h1>
-                    </div>
+                        <div>
+                        <Menu></Menu>
+                        </div>
+                {/* <div className="col-12">
+                    <nav class="menu">
+                        <ol>
+                            <li class="menu-item"><a href="/">Home</a></li>
+                            <li class="menu-item"><a href="/Saved">Saved</a></li>
+                            <li class="menu-item"><a href="sports">Sports</a></li>
+                            <li class="menu-item"><a href="concert">Concerts</a></li>
+                            <li class="menu-item"><a href="theatre">Theaters</a></li>
+                        </ol>
+                    </nav>
+                </div>
+       */}
 
+
+
+                
                 </header>
             </div>
         );
