@@ -57,7 +57,7 @@ class App extends Component {
   return (
     <Router>
       <div>
-
+       
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         
         {this.state.loggedIn &&

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import {  Link } from 'react-router-dom'
 import '../../App.css';
+import './style.css';
 import axios from 'axios';
 import SignInBtn from '../SignInBtn';
 import Menu from '../Menu';
-import logo from './logo.png';
+import logo from './logo2.png';
 
 
 class Navbar extends Component {
@@ -48,39 +49,13 @@ class Navbar extends Component {
                             </section>
 
                         ) : ( <Menu></Menu>
-                            // <section className="navbar-section signbtn">
 
-                            //     <Link to="/login" className="btn btn-link text-secondary signbtn">
-                            //         <span className="text-secondary">Login</span>
-				            //     </Link>
-                                
-                            //     <Link to="/signup" className="btn btn-link signbtn">
-                            //         <span className="text-secondary">Sign Up</span>
-				            //     </Link>
-
-                            // </section>
                         )}
                     </div>
 
                         <div>
                         <SignInBtn></SignInBtn> 
                         </div>
-                {/* <div className="col-12">
-                    <nav class="menu">
-                        <ol>
-                            <li class="menu-item"><a href="/">Home</a></li>
-                            <li class="menu-item"><a href="/Saved">Saved</a></li>
-                            <li class="menu-item"><a href="sports">Sports</a></li>
-                            <li class="menu-item"><a href="concert">Concerts</a></li>
-                            <li class="menu-item"><a href="theatre">Theaters</a></li>
-                        </ol>
-                    </nav>
-                </div>
-       */}
-
-
-
-                
                 </header>
             </div>
         );

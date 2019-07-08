@@ -218,20 +218,34 @@ loadTickets = () => {
 
   render() {
     return (
-      
-
-      <Container>
-
+      <Container fluid>
+        <Row>
+        <Col size="12">
+         
+            <Jumbotron>
+              <h1>Ticket Tracker</h1>
+              <h3>Search and track your favorite tickets</h3>
+              <Container fluid>
+              <Row>
+                <Col size="xs-1 sm-3"></Col>
+                <Col size="xs-10 sm-6"> 
                 <SearchForm
                   value = {this.state.search}
                   handleFormSubmit={this.handleFormSubmit}
                   handleInputChange={this.handleInputChange}
                 />
+                </Col>
+                <Col size="xs-1 sm-3"></Col>
+              </Row>
+            </Container>
+            </Jumbotron>
+            </Col>
+        </Row>
 
-        <Container fluid>
-          <SearchResults tickets={this.state.tickets} savedTickets={this.savedTickets}/>
-        </Container>
-     </Container>
+      <Container fluid>
+            <SearchResults tickets={this.state.tickets} savedTickets={this.savedTickets}/>
+      </Container>
+      </Container>
     );
   }
 }
