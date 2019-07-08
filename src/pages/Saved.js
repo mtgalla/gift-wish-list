@@ -64,7 +64,7 @@ getUserId = () => {
     return (
         <Container fluid>
           <Jumbotron>
-            <h1>Ticket Search and Compare</h1>
+            <h1>Ticket Tracker</h1>
             <h3>Search and track your favorite tickets</h3>
           </Jumbotron>
             <Container>
