@@ -5,8 +5,9 @@ import axios from "axios";
    const keyword = "&keyword="
    const tApiKey = "&apikey=JXnaWBjyRcEQwWBS2tO1DRxzbaP4CKl1";
    const location = "&radius=25&unit=miles&city=boston";
+   const sort = "&sort=date,asc"
    const classification = "&classificationName=";
-   const resultSize = "&size=20";
+   const resultSize = "&size=100";
    const page = "&page=";
   const randomPage = page + (Math.floor(Math.random() * 20)).toString();
   console.log(randomPage);
@@ -14,7 +15,7 @@ import axios from "axios";
 export default {
   // Search ticketmaster
   searchTickets: function(search) {
-    return axios.get(tUrl + keyword + search + tApiKey + resultSize)
+    return axios.get(tUrl + keyword + search + tApiKey + resultSize + sort)
   },
   //search StubHub
   searchStubhub: function(search) {
@@ -25,7 +26,7 @@ export default {
   },
 // Search category
   searchCategory: function(category) {
-    return axios.get(tUrl + tApiKey + classification + category + randomPage)
+    return axios.get(tUrl + tApiKey + classification + category + randomPage + sort)
   },
   // Gets all tickets
   getTickets: function() {

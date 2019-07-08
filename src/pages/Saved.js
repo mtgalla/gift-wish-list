@@ -8,7 +8,8 @@ import { Container } from "../components/Grid";
 class Save extends Component {
   state = {
     savedTickets: [],
-    userTickets:[]
+    userTickets: [],
+    userId: ""
 
   };
 
@@ -17,11 +18,6 @@ class Save extends Component {
     this.loadTickets();
     // this.test();
   }
-
-//replace(/\/r/g, '/')
-  // test = () => {
-  // console.log(this.props.match.path.replace(/\//g, ''))
-  //     }
   
   //get Tickets and set saved ticket state 
   loadTickets = () => {
@@ -29,25 +25,26 @@ class Save extends Component {
       .then(res => {
         this.setState({ savedTickets: res.data});
         console.log(res.data[0]._id)
-        // const newTicket = {$push: {userTickets: res.data[0]._id}}
-        // API.saveUserTicket(res.data[0]._id)
-        //   .then(
-        //    this.setState({userTickets : newTicket})
-        //     )
-            // API.saveUserTicket(res.data[0]._id)
-            // .then({$push:{userTickets:res.data[0]._id}},{new:true})
-            // console.log(res.data[0]._id)
           })
-        // console.log("looking for savedTickets here: ", this.state.savedTickets)
+          .then( res => {
+            this.getUserId()
+          })
       .catch(err => console.log(err));
   };
 
-  // saveTicket = () => {
-  //   API.saveUserTicket()
-  //   .then(res => {
-  //     console.log(res.data[0]._id);
-  //   })
-  // };
+//method to get user id  
+getUserId = () => {
+  API.getUser(this.userId)
+  .then( response => {
+    console.log("user tickets: ",response)
+    this.setState({
+      userId: response.data.user._id
+    })
+    let userId = response.data.user._id
+    console.log("getUserId: ", userId)
+    console.log("getthis.state.userId", this.state.userId)
+  })
+};
 
   //delete ticket
   deleteTicket = event => {

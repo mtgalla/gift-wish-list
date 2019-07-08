@@ -1,44 +1,46 @@
 import React from "react";
-// import "./style.css";
+import "./style.css";
 import { Col, Row, } from "../Grid";
 import Moment from "react-moment";
 
 const SavedTickets = props => {
   return (props.savedTickets.length === 0) ? (
     <div className="card1">
-        <div className="card-body player">
-            <div className="article">
+        {/* <div className="card-body player">
+            <div className="article"> */}
                 <h3>No Saved Tickets</h3>
-            </div>
-        </div>
+            {/* </div>
+        </div> */}
     </div>
 ) : (
-        <div className="card1">
-            <div className="card-body">
-                <div className="article">
-                    <h3>Saved Tickets</h3>
+
+          <div>
+            <h3>Saved Tickets</h3>
+            <div className="card-group">
+            {/* <div className="card-body">
+                <div className="article"> */}
                     {props.savedTickets.map(saveTicket => {
                         return (
-                          <div>
+                          <Col size="sm-12 md-5 lg-4">
                             <li className="list list-group-item">
+
                                 <Row className="SearchResult row" id={saveTicket.title + "Card"} key={saveTicket._id}>
-                                    <Col size="12" className="ticketImage">
-                                        <img src={saveTicket.image} alt={saveTicket.name} />
+                                  <Col size="6">
+                                    <h3 className="ticketDate"><Moment format ="MMM DD">{saveTicket.date}</Moment></h3>
+                                    {/* <Col size="12" className="ticketImage"> */}
+                                        <img id="ticketImage" src={saveTicket.image} alt={saveTicket.name} />
                                     </Col>
-                                    <Col size="1" className="emptyCol"/>
-                                    <Col size="9" className="ticketInfo">
-                                      <Row>
-                                          <h3 className="ticketDate"><Moment format ="MMM DD">{saveTicket.date}</Moment></h3>
-                                      </Row>
-                                      <Row>
-                                          <h3 className="ticketName">{saveTicket.name}</h3>
-                                      </Row>
-                                      <Row>
+                                    {/* <Col size="1" className="emptyCol"/> */}
+                                    {/* <Col size="9" className="ticketInfo"> */}
+
+                                    <Col size="6">
+                                          <h4 className="ticketName">{saveTicket.name}</h4>
+                                   
+                                      {/* <Row>
                                           <h4 className="ticketAttraction">{saveTicket.attraction}</h4>
-                                      </Row>
-                                      <Row>
+                                      </Row> */}
                                           <p className="ticketVenue">{saveTicket.venue}</p>
-                                      </Row>
+                                      
                                     </Col>
                                 </Row>
                                 <br></br>
@@ -54,11 +56,12 @@ const SavedTickets = props => {
                                 </Row>
                             </li>
                             <br />
-                          </div>
+                          </Col>
                         );
                     })}
-                </div>
-            </div>
+                {/* </div>
+            </div> */}
+        </div>
         </div>
     )
 }

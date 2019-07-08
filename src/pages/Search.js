@@ -178,7 +178,7 @@ searchCategoryTM = () => {
     })
     )
 //get current user id from db and then push saved ticket id to user db
-  .then( res =>
+  .then(res =>
     console.log("from line 210 ", this.userTickets),
     this.getUserId(),
     this.userId = this.state.userId,
@@ -205,7 +205,6 @@ getUserId = () => {
     console.log("getthis.state.userId", this.state.userId)
   })
 };
-
 
 loadTickets = () => {
     API.getTickets()
@@ -243,17 +242,9 @@ loadTickets = () => {
             </Col>
         </Row>
 
-      <Container fluid>
-
-
-            <SearchResults tickets={this.state.tickets} savedTickets={this.savedTickets}/>
-
-      
-
-      </Container>
-            
-          {/* </Col> */}
-        {/* </Row> */}
+        <Container fluid>
+          <SearchResults tickets={this.state.tickets} savedTickets={this.savedTickets}/>
+        </Container>
       </Container>
     );
   }
