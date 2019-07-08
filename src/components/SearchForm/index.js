@@ -16,7 +16,7 @@ function SearchForm(props) {
           placeholder="Enter Event"
           id="book"
         />
-        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success col-2 button-inline" style={{color:"blue"}}>
+        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success col-2 button-inline" >
           Submit
         </button>
         </div>

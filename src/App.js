@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 // components
 import Signup from './components/sign-up'
 import LoginForm from './components/login-form'
-import Navbar from './components/navbar'
+import Navbar from './components/navbar/navbar'
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
@@ -85,9 +85,9 @@ class App extends Component {
           
           <Route component={NoMatch} /> 
         </Switch>
-
+        
       </div>
-
+            
     </Router>
   );
 }

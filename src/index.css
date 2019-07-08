@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #eeee;
+  background-color: #f77a3b;
 }
 
 a{text-align:center}
@@ -38,7 +38,7 @@ ol{margin:0;padding:0;list-style-type:none}
 
 .menu-item a{
 	width:100%;
-	padding:16px 0;
+	padding:16px 1px;
 	display:block;
 	position:relative;
 	color:#fff;
@@ -49,25 +49,25 @@ ol{margin:0;padding:0;list-style-type:none}
 
 .menu-item a:before{
 	width:100%;
-	padding:16px 0;
+	padding:16px 1px;
 	display:block;
 	position:absolute;
-	color:#000;
+	color: black;
 	border-radius:4px
 	}
 
 .menu > ol:first-child > .menu-item{display:block}
 
 .menu > ol:first-child > .menu-item > a
-	{background:lightgray;box-shadow:0 8px 6px -6px #595959}
+	{background: #595959; ;box-shadow:0 8px 6px -6px #595959}
 
 .menu > ol:first-child > .menu-item:nth-of-type(2) > a,
 .menu > ol:first-child > .menu-item:nth-of-type(4) > a,
 .menu > ol:first-child > .menu-item:nth-of-type(5) > a
-	{border-left:1px solid #fff;border-right:1px solid #fff}
+	 {border-left:2px solid #595959 ;border-right:2px solid #595959} 
 
 .menu > ol:first-child > .menu-item > a:before
-	{background:#ff9900;bottom:90%;transform:rotateX(-90deg) translate3d(0,0,75px)}
+	{background:#f77a3b;bottom:90%;transform:rotateX(-90deg) translate3d(0,0,75px)}
 
 .menu > ol:first-child > .menu-item:nth-of-type(1) > a:before{content:"Home"}
 .menu > ol:first-child > .menu-item:nth-of-type(2) > a:before{content:"Saved"}
@@ -75,7 +75,11 @@ ol{margin:0;padding:0;list-style-type:none}
 .menu > ol:first-child > .menu-item:nth-of-type(4) > a:before{content:"Concerts"}
 .menu > ol:first-child > .menu-item:nth-of-type(5) > a:before{content:"Theater"}
 
-.menu > ol:first-child > .menu-item:nth-of-type(3) > a:after,
+.menu > ol:first-child > .menu-item:hover > a{transform:rotateX(90deg)}
+
+
+/* Sub-Menu not currently in used */
+/* .menu > ol:first-child > .menu-item:nth-of-type(3) > a:after,
 .menu > ol:first-child > .menu-item:nth-of-type(4) > a:after,
 .menu > ol:first-child > .menu-item:nth-of-type(5) > a:after{
 	content:"\0025BE";
@@ -87,26 +91,26 @@ ol{margin:0;padding:0;list-style-type:none}
 	color:#fff;
 	font-size:20px;
 	text-align:center
-	}
+	} */
 
-.menu > ol:first-child > .menu-item:hover > a{transform:rotateX(90deg)}
 
-.menu > ol:first-child > .menu-item:nth-of-type(3):hover > a:after,
+
+/* .menu > ol:first-child > .menu-item:nth-of-type(3):hover > a:after,
 .menu > ol:first-child > .menu-item:nth-of-type(4):hover > a:after,
 .menu > ol:first-child > .menu-item:nth-of-type(5):hover > a:after
-	{content:"\0025B4";color:#000;transform:rotateX(-90deg) translate3d(0,0,75px)}
+	{content:"\0025B4";color:#000;transform:rotateX(-90deg) translate3d(0,0,75px)} */
 
-.sub-menu{
+/* .sub-menu{
 	background:#fff;
 	width:100%;
 	top:51px;
 	display:none;
 	position:absolute;
 	z-index:99;
-	border-top:1px solid #fff
-	}
+	/* border-top:1px solid #fff */
+	/* } */ 
 
-.sub-menu > .menu-item:nth-of-type(1){animation:fadein-down .5s .2s ease both}
+/* .sub-menu > .menu-item:nth-of-type(1){animation:fadein-down .5s .2s ease both}
 .sub-menu > .menu-item:nth-of-type(2){animation:fadein-down .7s .2s ease both}
 .sub-menu > .menu-item:nth-of-type(3){animation:fadein-down .9s .2s ease both}
 .sub-menu > .menu-item:nth-of-type(5){animation:fadein-down .9s .2s ease both}
@@ -142,7 +146,7 @@ ol{margin:0;padding:0;list-style-type:none}
 .menu > ol:first-child > .menu-item:nth-of-type(5) > .sub-menu > .menu-item:nth-of-type(3) > a:before{content:"Opera"}
 .menu > ol:first-child > .menu-item:nth-of-type(5) > .sub-menu > .menu-item:hover > a{transform:rotateY(-90deg)}
 
-.menu > ol:first-child > .menu-item:hover > .sub-menu{display:block}
+.menu > ol:first-child > .menu-item:hover > .sub-menu{display:block} */
 
 @media screen and (min-width:321px) and (max-width:799px){
 	.menu{width:320px;margin:auto}

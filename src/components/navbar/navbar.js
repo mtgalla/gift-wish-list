@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
-import logo from '../logo.svg';
-import '../App.css';
-import axios from 'axios'
-import SearchForm from '../components/SearchForm';
-import SignInBtn from '../components/SignInBtn';
-import Menu from '../components/Menu';
+import '../../App.css';
+import axios from 'axios';
+import SignInBtn from '../SignInBtn';
+import Menu from '../Menu';
+import logo from './logo.png';
 
 
 class Navbar extends Component {
@@ -33,25 +32,22 @@ class Navbar extends Component {
         const loggedIn = this.props.loggedIn;
         
         return (
-
+            
             <div>
                 <header className="navbar App-header" id="nav-container">
-
-
-
-                <form class="col-10"><SearchForm></SearchForm></form>
-
+                <div class="logo col-1">
+                    <img src={logo} alt="Logo"/>
+                    </div>
                 <div>
                         {loggedIn ? ( 
                             <section className="navbar-section" >
-
                                 <Link to="#" className="btn btn-link text-secondary" onClick={this.logout}>
                                     <span className="text-secondary">Logout</span>
                                 </Link>
 
                             </section>
 
-                        ) : ( <SignInBtn></SignInBtn> 
+                        ) : ( <Menu></Menu>
                             // <section className="navbar-section signbtn">
 
                             //     <Link to="/login" className="btn btn-link text-secondary signbtn">
@@ -67,7 +63,7 @@ class Navbar extends Component {
                     </div>
 
                         <div>
-                        <Menu></Menu>
+                        <SignInBtn></SignInBtn> 
                         </div>
                 {/* <div className="col-12">
                     <nav class="menu">
