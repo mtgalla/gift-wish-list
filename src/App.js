@@ -3,8 +3,8 @@ import axios from 'axios'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 // components
-import Signup from './components/sign-up'
-import LoginForm from './components/login-form'
+import Signup from './components/login/sign-up'
+import LoginForm from './components/login/login-form'
 import Navbar from './components/navbar/navbar'
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";

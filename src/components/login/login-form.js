@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import "./style.css";
 
 class LoginForm extends Component {
     constructor() {
@@ -55,14 +56,14 @@ class LoginForm extends Component {
         } else {
             return (
                 
-                <div>
-                    <h4>Login</h4>
+                <div className="loginBox">
+                    <h4>Log in</h4>
 
                     <form className="form-horizontal">
                         <div className="form-group">
 
                             <div className="col-1 col-ml-auto">
-                                <label className="form-label" htmlFor="username">Login Email:</label>
+                                <label className="form-label" htmlFor="username">Email:</label>
                             </div>
 
                             <div className="col-3 col-mr-auto">
@@ -96,7 +97,7 @@ class LoginForm extends Component {
                         <div className="form-group ">
                             <div className="col-7"></div>
                             
-                            <button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit} type="submit">
+                            <button className="btn btn-primary col-1 col-mr-auto btn-login" onClick={this.handleSubmit} type="submit">
                                 Login
                             </button>
                         </div>

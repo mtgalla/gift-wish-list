@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
+import  "./style.css";
 
 class Signup extends Component {
 	constructor() {
@@ -67,7 +68,7 @@ class Signup extends Component {
 		} else {
 
 			return (
-				<div className="SignupForm">
+				<div className="signUpBox">
 					<h4>Sign up</h4>
 
 					<form className="form-horizontal">
@@ -107,7 +108,7 @@ class Signup extends Component {
 						<div className="form-group ">
 							<div className="col-7"></div>
 
-							<button className="btn btn-primary col-1 col-mr-auto" onClick={this.handleSubmit} type="submit">
+							<button className="btn btn-primary col-1 col-mr-auto btn-signup" onClick={this.handleSubmit} type="submit">
 								Sign up
 							</button>
 						</div>
