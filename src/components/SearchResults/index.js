@@ -8,7 +8,7 @@ const SearchResults = props => {
   console.log(props.tickets.length);
   return (props.tickets.length === 0) ? (
     <div className="card1">
-                <h3>No Results to Display</h3>
+                {/* <h3>No Results to Display</h3> */}
             </div>
 ) : (
    

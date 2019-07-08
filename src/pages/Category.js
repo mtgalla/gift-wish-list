@@ -189,7 +189,7 @@ loadTickets = () => {
         <Col size="12">
          
             <Jumbotron>
-              <h1>Ticket Tracker</h1>
+              <h1>Ticket Tree</h1>
               <h3>Search and track your favorite tickets</h3>
               <Container fluid>
               <Row>
