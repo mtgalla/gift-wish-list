@@ -16,7 +16,7 @@ class Save extends Component {
   
   componentDidMount() {
     this.loadTickets();
-    // this.test();
+    // this.getUser();
   }
   
   //get Tickets and set saved ticket state 
@@ -25,26 +25,58 @@ class Save extends Component {
       .then(res => {
         this.setState({ savedTickets: res.data});
         console.log(res.data[0]._id)
+          //  this.getUser()
+           console.log(res)
           })
-          .then( res => {
-            this.getUserId()
-          })
+
       .catch(err => console.log(err));
   };
 
 //method to get user id  
-getUserId = () => {
-  API.getUser(this.userId)
+getUser = () => {
+  API.getUser()
   .then( response => {
     console.log("user tickets: ",response)
     this.setState({
       userId: response.data.user._id
     })
     let userId = response.data.user._id
+    this.getUserId()
     console.log("getUserId: ", userId)
     console.log("getthis.state.userId", this.state.userId)
+    console.log(this.state)
   })
 };
+
+
+//******** */
+//method to get user id  
+getUserId = () => {
+  API.getUserId(this.state.userId)
+  .then( response => {  
+    console.log("user tickets: ",response.data.userTickets)
+    // this.setState({
+    //   userId: response.data.user._id
+    // })
+    // let userId = response.data.user._id
+    // console.log("getUserId: ", userId)
+    // console.log("getthis.state.userId", this.state.userId)
+    // console.log(this.state)
+  // })
+  const id = response.data.userTickets
+id.map(userIds => {
+  console.log(userIds)
+  API.getTicket(userIds)
+.then(res => {
+  this.setState({savedTickets : res.data})
+  console.log(res.data)
+     console.log(res)
+    })
+.catch(err => console.log(err));
+})
+})
+};
+
 
   //delete ticket
   deleteTicket = event => {

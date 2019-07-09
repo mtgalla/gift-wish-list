@@ -49,5 +49,8 @@ export default {
   },
   saveUserTicket: function (userId, {users: userTickets}) {
     return axios.put("/api/user/"+ userId, {users :userTickets})
+  },
+  getUserId: function(id) {
+    return axios.get("/api/user/" + id)
   }
 };
