@@ -6,6 +6,7 @@ import { Col, Row, Container } from "../components/Grid";
 import SearchResults from "../components/SearchResults";
 import SearchForm from "../components/SearchForm";
 import axios from "axios";
+import DateCalendar from "../components/calendar";
 
 
 class Search extends Component {
@@ -221,7 +222,7 @@ loadTickets = () => {
       <Container fluid>
         <Row>
         <Col size="12">
-         
+          <DateCalendar></DateCalendar>
             <Jumbotron>
               <h1>Ticket Tracker</h1>
               <h3>Search and track your favorite tickets</h3>
