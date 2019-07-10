@@ -22,7 +22,8 @@ export default {
   searchStubhub: function(search) {
     return axios.get( "https://api.stubhub.com/sellers/search/events/v3",
     
-    {params: {q:search},
+    {
+      params: {q:search},
       headers: { 'Authorization':'Bearer HXYFUF7ufrQ9EuxZ1lKZDnKehYpI' }
     })
   },
