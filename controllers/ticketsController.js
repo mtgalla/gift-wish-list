@@ -1,4 +1,4 @@
-const db = require("../server/database/models");
+const db = require("../models");
 
 // Defining methods for the TicketsController
 module.exports = {

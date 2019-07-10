@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const session = require('express-session')
-const dbConnection = require('./database')
+//const dbConnection = require('./database')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('./passport');
 const app = express();
@@ -14,12 +14,17 @@ const user = require('./routes/user')
 
 // MIDDLEWARE
 app.use(morgan('dev'))
-app.use(
-	bodyParser.urlencoded({
-		extended: false
-	})
-)
+
+app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+
+// if in production, serve up React's build folder in the client subfolder
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+}
 
 // Sessions
 app.use(
@@ -39,6 +44,8 @@ app.use(passport.session()) // calls the deserializeUser
 app.use(routes);
 app.use('/user', user)
 
+mongoose.Promise = Promise;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/ticket-tracker', {useNewUrlParser: true});
 
 // Starting Server 
 app.listen(PORT, () => {
