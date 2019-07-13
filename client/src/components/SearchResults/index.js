@@ -11,8 +11,10 @@ const SearchResults = props => {
                 {/* <h3>No Results to Display</h3> */}
             </div>
 ) : (
-   
       <div className="card-group">
+        <Row>
+          <div id="map"></div>
+        </Row>
         {props.tickets.map(ticket => {
           return (
             <Col size="sm-12 md-5 lg-4">

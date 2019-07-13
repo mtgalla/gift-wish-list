@@ -17,7 +17,8 @@ class Search extends Component {
     message:"",
     userTickets: "",
     userId: "",
-    ticketId: null
+    ticketId: null,
+    location: []
   };
 
   componentDidMount() {
@@ -44,9 +45,10 @@ class Search extends Component {
                 venue: (result._embedded.venues[0].name===undefined) ? ("No venue info available") : (result._embedded.venues[0].name),
                 image: (result.images[0].url===undefined) ? ("No image") : (result.images[0].url),
                 link: (result.url===undefined) ? ("No link") : (result.url),
-                date: (result.dates.start.localDate===undefined) ? ("Date not available") : (result.dates.start.localDate)
+                date: (result.dates.start.localDate===undefined) ? ("Date not available") : (result.dates.start.localDate),
+                location: (result._embedded.venues[0].location===undefined) ? ("No location info available") : ([result._embedded.venues[0].city.name, parseFloat(result._embedded.venues[0].location.latitude),parseFloat(result._embedded.venues[0].location.longitude)])
               }
-
+              console.log(result);
               return result;
             })
 
@@ -138,7 +140,9 @@ class Search extends Component {
                 venue: (result._embedded.venues[0].name===undefined) ? ("No venue info available") : (result._embedded.venues[0].name),
                 image: (result.images[0].url===undefined) ? ("No image") : (result.images[0].url),
                 link: (result.url===undefined) ? ("No link") : (result.url),
-                date: (result.dates.start.localDate===undefined) ? ("Date not available") : (result.dates.start.localDate)
+                date: (result.dates.start.localDate===undefined) ? ("Date not available") : (result.dates.start.localDate),
+                location: (result._embedded.venues[0].location===undefined) ? ("No location info available") : ([result._embedded.venues[0].city.name, parseFloat(result._embedded.venues[0].location.latitude),parseFloat(result._embedded.venues[0].location.longitude)])
+
               }
 
               return result;
