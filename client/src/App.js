@@ -10,6 +10,7 @@ import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import Category from "./pages/Category"
+import Chat from "./Chat"
 
 class App extends Component {
   constructor() {
@@ -57,13 +58,12 @@ class App extends Component {
   return (
     <Router>
       <div>
-       
-        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        
+        <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn}  />
+                
         {this.state.loggedIn &&
           <p>Signed in as: {this.state.username}</p>
         }
-
+        
         <Switch>
           <Route exact path="/" component={Search} />
           <Route exact path="/tickets" component={Search} />
@@ -85,9 +85,9 @@ class App extends Component {
           
           <Route component={NoMatch} /> 
         </Switch>
-        
+        <Chat></Chat> 
       </div>
-            
+      
     </Router>
   );
 }

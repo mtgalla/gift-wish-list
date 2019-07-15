@@ -3,13 +3,25 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const session = require('express-session');
+const socket = require('socket.io');
 const passport = require('./passport');
 
 const routes = require('./routes');
 const user = require('./routes/user');
 
+
 const app = express();
 const PORT = process.env.PORT || 3001;
+const server = process.env.server || 8080;
+
+const io = socket(server);
+io.on('connection', (socket) => {
+  console.log(socket.id);
+
+  socket.on('SEND_MESSAGE', function(data) {
+    io.emit('RECEIVE_MESSAGE', data);
+});
+});
 
 app.use(
   bodyParser.urlencoded({
@@ -36,12 +48,12 @@ app.use(
 );
 
 // Passport
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
 app.use(routes);
-app.use('/user', user)
+app.use('/user', user);
 
 mongoose.Promise = Promise;
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ticket-tracker', { useNewUrlParser: true });

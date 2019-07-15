@@ -36,9 +36,9 @@ class Navbar extends Component {
             
             <div>
                 <header className="navbar App-header" id="nav-container">
-                <div class="logo col-1">
+                <div className="logo col-1">
                     <img src={logo} alt="Logo"/>
-                    </div>
+                </div>
                 <div>
                         {loggedIn ? ( 
                             <section className="navbar-section" >
