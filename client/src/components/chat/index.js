@@ -1,5 +1,6 @@
 import React from "react";
 import io from "socket.io-client";
+import "./style.css";
 
 class Chat extends React.Component{
     constructor(props){
@@ -37,12 +38,12 @@ class Chat extends React.Component{
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-4">
+                    <div className="col-12">
                         <div className="card">
                             <div className="card-body">
-                                <div className="card-title"><h4>Event Forum</h4></div>
+                                <div className="card-title"><h4>Ticket Forum</h4></div>
                                 <hr/>
-                                <div>Share your experiences with others </div>
+                                <div>Share your tickets with others</div>
                                 <div className="messages">
                                     {this.state.messages.map(message => {
                                         return (
@@ -57,7 +58,7 @@ class Chat extends React.Component{
                                 <br/>
                                 <input type="text" placeholder="Message" className="form-control" value={this.state.message} onChange={ev => this.setState({message: ev.target.value})}/>
                                 <br/>
-                                <button onClick={this.sendMessage} className="btn btn-primary form-control">Send</button>
+                                <button onClick={this.sendMessage} className="btn btn-primary form-control forum-btn">Send</button>
                             </div>
                         </div>
                     </div>
