@@ -10,7 +10,7 @@ import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import Category from "./pages/Category"
-import Chat from "./Chat"
+
 
 class App extends Component {
   constructor() {
@@ -59,7 +59,8 @@ class App extends Component {
     <Router>
       <div>
         <Navbar updateUser={this.updateUser} loggedIn={this.state.loggedIn}  />
-                
+        <br></br><br></br><br></br><br></br>
+
         {this.state.loggedIn &&
           <p>Signed in as: {this.state.username}</p>
         }
@@ -85,7 +86,6 @@ class App extends Component {
           
           <Route component={NoMatch} /> 
         </Switch>
-        <Chat></Chat> 
       </div>
       
     </Router>
