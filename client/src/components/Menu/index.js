@@ -7,6 +7,7 @@ function Menu(props) {
     return (
   
     <div className="col-12">
+        <div className="title"><h2>Ticket Tracker</h2><h6>Search and track your favorite tickets</h6></div>
         <div><SearchForm></SearchForm></div>
         <nav className="menu">
             <ol>
