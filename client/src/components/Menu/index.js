@@ -1,11 +1,13 @@
 import React from "react";
 import "./style.css";
+import SearchForm from '../SearchForm';
     
     
 function Menu(props) {
     return (
   
     <div className="col-12">
+        <div><SearchForm></SearchForm></div>
         <nav className="menu">
             <ol>
                 <li className="menu-item"><a href="/">Home</a></li>

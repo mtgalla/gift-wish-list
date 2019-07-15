@@ -49,11 +49,13 @@ class Navbar extends Component {
 
                             </section>
 
-                        ) : ( <Menu></Menu>
+                        ) : ( 
+                        
+                        <Menu></Menu>
 
                         )}
-                    </div>
-
+                </div>
+                        
                         <div>
                         <SignInBtn></SignInBtn> 
                         </div>
