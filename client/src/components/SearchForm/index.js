@@ -14,7 +14,7 @@ function SearchForm(props) {
           type="text"
           className="form-control-inline col-9"
           placeholder="Enter Event"
-          id="book"
+          id="ticket"
         />
         <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success col-2 button-inline" >
           Submit
