@@ -35,6 +35,7 @@ class Navbar extends Component {
         return (
             
             <div>
+
                 <header className="navbar App-header" id="nav-container">
                 <div className="logo col-1">
                     <img src={logo} alt="Logo"/>

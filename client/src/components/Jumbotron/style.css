@@ -1,5 +1,5 @@
  .Jumbotron {
- height: 400;
+ height: 200;
   padding-Top: 10%;
    text-Align: center;
    -web-kit-Text-Stroke: 1px gray; 
@@ -7,4 +7,8 @@
     text-Shadow: 10px 10px 0 #000 -2px -2px 0 #000 2px -2px 0 #000 -2px 2px 0 #000  2px 2px 0 #000; background-color: #f77a3b; 
     
 
+ }
+
+ .chat {
+   color: black;
  }
