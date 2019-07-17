@@ -6,6 +6,8 @@ import { Col, Row, Container } from "../components/Grid";
 import SearchResults from "../components/SearchResults";
 import SearchForm from "../components/SearchForm";
 import axios from "axios";
+import Calendar from 'react-calendar';
+import moment from 'moment'
 
 
 class Search extends Component {
@@ -18,7 +20,8 @@ class Search extends Component {
     userTickets: "",
     userId: "",
     ticketId: null,
-    location: []
+    location: [],
+    date: new Date(),
   };
 
   componentDidMount() {
@@ -72,6 +75,47 @@ class Search extends Component {
     event.preventDefault();
     this.searchTM(event)
   };
+
+  onChange = date => {
+    this.setState({ date})
+    const formatted = moment.utc(date).format()
+    console.log("formatted: ", formatted)
+    API.searchByDate(formatted).then(res => {
+      const events = res.data._embedded.events
+
+          if (events === "error" || events === undefined) {
+            throw new Error(events);
+          }
+          else {
+            let results = events;
+            console.log("result??? ", events[0])
+            results = results.map(result => {
+              
+              //map each ticket data into new object 
+              //with ternary operators to handle missing results
+              result = {
+                key: result.id,
+                id: result.id,
+                name: (result.name===undefined) ? ("No title") : (result.name),
+                attraction: (result._links.attractions===undefined) ? ("No info available") : (result._links.attractions[0].name),
+                venue: "",
+                image: (result.images[0].url===undefined) ? ("No image") : (result.images[0].url),
+                link: (result.url===undefined) ? ("No link") : (result.url),
+                date: (result.dates.start.localDate===undefined) ? ("Date not available") : (result.dates.start.localDate),
+                location: ""
+
+              }
+
+              return result;
+            })
+  
+            this.setState({ tickets: results, error: "" });
+            console.log("SET STATE: ", results)
+          }
+        }
+      ).catch(err => console.log("error:", err));
+      
+  }
 
   searchStub = () => {
     API.searchStubhub(this.state.search)
@@ -225,9 +269,16 @@ class Search extends Component {
               <h1>Ticket Tracker</h1>
               <h3>Search and track your favorite tickets</h3>
               <Container fluid>
-
+                <div>
+                  <Calendar
+                    onChange={this.onChange}
+                    value={this.state.date}
+                  />
+                </div>
                 <Row>
-                  <Col size="xs-1 sm-3"></Col>
+                  <Col size="xs-1 sm-3">
+                  
+                  </Col>
 
                   <Col size="xs-10 sm-6"> 
                     <SearchForm

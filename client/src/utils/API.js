@@ -9,6 +9,7 @@ import axios from "axios";
   const classification = "&classificationName=";
   const resultSize = "&size=100";
   const page = "&page=";
+  const date = "&startDateTime="
   const randomPage = page + (Math.floor(Math.random() * 20)).toString();
   console.log(randomPage);
 
@@ -16,6 +17,11 @@ export default {
   // Search ticketmaster
   searchTickets: function(search) {
     return axios.get(tUrl + keyword + search + tApiKey + resultSize + sort)
+  },
+
+  searchByDate: function(dateval) {
+    const reqURL = tUrl + tApiKey + resultSize + date + dateval + sort
+    return axios.get(reqURL)
   },
 
   //search StubHub
