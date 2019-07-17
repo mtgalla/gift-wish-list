@@ -34,6 +34,7 @@
     "express": "^4.16.4",
     "express-session": "^1.16.2",
     "google-map-react": "^1.1.4",
+    "http": "0.0.0",
     "if-env": "^1.0.4",
     "moment": "^2.24.0",
     "moment-timezone": "^0.5.25",
